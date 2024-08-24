@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        .container
+        {
+            position: absolute;
+            height: auto;
+            width: 500px;
+            
+            border: 5px solid orange;
+            border-left: none;
+            border-right: none;
+           background-color: beige; 
+            left: 35%;
+            top: 15%;
+            
+        }
+        .container h1{
+            text-align: center;
+            padding: 25px 0;
+            
+        }
+        .container form{
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        input[type=text]{
+            height: 25px;
+            padding-left: 5px;
+        }
+        input[type=submit]{
+            padding: 10px 125px;
+            background-color: orange;
+            color: white;
+            border: none;
+            margin-bottom:20px ;
+        }
+        span{
+            color: red;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Responsive Registration Form</h1>
+        <form action="" name="f1" onsubmit="return validation()">
+            <input type="text" name="email" placeholder="Email" id="email" size="40px" autocomplete="off">
+            <br>
+            <span id="mail"></span>
+            <br>
+
+            <input type="text" name="Password" placeholder="Password" id="pas" size="40px" autocomplete="off">
+            <br>
+            <span id="password"></span>
+            <br>
+
+            <input type="text" name="RePassword" placeholder="Re-type Password" id="repas" size="40px" autocomplete="off">
+            <br>
+            <span id="copassword"></span>
+            <br>
+
+            <input type="text" name="" placeholder="Enter Mo Number" id="mo" size="40px" autocomplete="off">
+            <br>
+            <span id="monumber"></span>
+            <br>
+
+            <input type="text" name="fname" placeholder="First name" id="fname" size="15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="lname" placeholder="Last name" id="lname" size="15px">
+            <br>
+            <br>
+            <input type="radio" name="m" class="male" value="male">&nbsp;Male &nbsp;<input type="radio" name="m" class="male" value="female">&nbsp;Female  
+            <br>
+            <span id="radio"></span>
+            <br>
+            <select name="country" id="country" style="width: 315px;height: 25px;">
+                <option value="" selected>Select Option </option>
+                <option value="">India</option>
+                <option value="">USA</option>
+                <option value="">UK</option>
+                <option value="">Russia</option>
+                </select>
+            <br><br>
+
+            <input type="checkbox" id="m1" name="m1" value="">
+            <label for="m1"> I agree with terms and conditions</label><br>
+            <input type="checkbox" id="m2" name="m2" value="">
+            <label for="m2"> I want to receive newsletter</label><br> <br>
+            <input type="submit" value="Register" name="btn"> 
+
+        </form>
+    </div>
+
+    <script>
+       
+        function validation(){
+            var first = document.getElementById('email').value;
+            var second = document.getElementById('pas').value;
+            var third = document.getElementById('repas').value;
+            var four = document.getElementById('mo').value;
+            var five = document.getElementsByClassName('male').value;
+
+            
+            
+            
+            if(first == ""){
+                document.getElementById('mail').innerHTML = "**Please fill the email field";
+                return false;
+            }
+            if(first.indexOf('@') <= 0){
+                document.getElementById('mail').innerHTML = "**Invalid position '@'";
+                return false;
+            }
+            if((first.charAt(first.length-4)!='.') && (first.charAt(first.length-3)!='.')){
+                document.getElementById('mail').innerHTML = "**Invalid position of '.'";
+                return false;
+            }
+
+
+            if(second == ""){
+                document.getElementById('password').innerHTML = "**Please fill the password field";
+                return false;
+            }
+            if((second.length <= 5) || (second.length > 25)){
+                document.getElementById('password').innerHTML = "**Password lenth must be between 5 and 25";
+                return false;
+            }
+            if(second!=third){
+                document.getElementById('copassword').innerHTML = "** Both password are not matching";
+                return false;
+
+            }
+
+            if(third == ""){
+                document.getElementById('copassword').innerHTML = "**Please fill the re-type password field";
+                return false;
+            }
+            if(four == ""){
+                document.getElementById('monumber').innerHTML = "**Please fill the Mobile Number field";
+                return false;
+            }
+            if(isNaN(four)){
+                document.getElementById('monumber').innerHTML = "**You can enter only numbers";
+                return false;
+            }
+            if(four.length!=10){
+                document.getElementById('monumber').innerHTML = "**Number must be 10 degits only";
+                return false;
+            }
+            for(var i=0;i<=five.length;i++){
+                if(five[i].checked==true){
+                    return true;
+                }
+                document.getElementById('radio').innerHTML = "**Number must be 10 degits only";
+                return false;
+            }
+            
+        }
+
+
+    </script>
+</body>
+</html>
